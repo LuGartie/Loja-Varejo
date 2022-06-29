@@ -11,6 +11,34 @@ class Product
     private provider $provider;
     private bool $isActive;
 
+    public function __construct(
+        float $cost,
+        float $tributes,
+        float $fixedCost,
+        int $barCode,
+        string $name,
+        int $quantity,
+        Provider $provider,
+        float $lucre = 0.2,
+        bool $isActive = true,
+    )
+    {   
+        /*inicializando propriedades*/
+        $this->barCode = $barCode;
+        $this->name = $name;
+        $this->provider = $provider;
+        $this->quantity = $quantity;
+        $this->isActive = $isActive;
+
+        /*cauculando preço*/
+        self::calculateSalePrice(
+            tributes: $tributes,
+            cost: $cost,
+            lucre: $lucre,
+            fixedCost: $fixedCost,
+        );
+    }
+
     /**
      * Essa função irá calcular o preço de venda do produto com base nos custos fixos, tributos e custo de aquisição
      *
