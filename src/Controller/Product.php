@@ -52,7 +52,7 @@ if($erro) //*Array não vázio igual a positivo
         cost: $productCost,
         tributes:0.75,
         quantity:$productQuantity,
-        provider:new Provider()
+        provider:new Provider($cnpj,$name,$address)
     );
     echo "<pre>";
     var_dump($product);

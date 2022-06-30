@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form action="../controller/Product.php" method="POST">
+    <form action="../Controller/Product.php" method="POST">
         <section class="mx-4 mt-4 columns-3">
             <article>
                 <label for="barCode" class="cursor-pointer">Código de barra: </label>
