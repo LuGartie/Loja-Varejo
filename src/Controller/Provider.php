@@ -78,8 +78,8 @@ if($erro) //*Array não vázio igual a positivo
     );
     $provider = new Provider(
         name: $name,
-        npj: $cnpj,
-        adress:new $address,
+        cnpj: $cnpj,
+        address:new $address,
     );
     echo "<pre>";
     var_dump($provider);
