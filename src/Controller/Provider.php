@@ -70,15 +70,16 @@ if($erro) //*Array não vázio igual a positivo
     );
 }else{
     $address= new Address(
-            publicPlace: $publicPlace,
-            streetNumber: $streetNumber,
-            neighborhood: $neighborhood,
-            city: $city,
-            postalCode: $postalCode,
+        publicPlace: $publicPlace,
+        streetNumber: $streetNumber,
+        neighborhood: $neighborhood,
+        city: $city,
+        postalCode: $postalCode,
     );
     $provider = new Provider(
-            name: $name,
-            cnpj: $cnpj,
+        name: $name,
+        npj: $cnpj,
+        adress:new $address,
     );
     echo "<pre>";
     var_dump($provider);
