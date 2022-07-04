@@ -3,11 +3,13 @@ namespace APP\Controller;
 
 require_once '../../vendor/autoload.php';
 
-use APP\Model\Provider;
-use APP\Utils\Redirect;
-use APP\Model\Address;
 use APP\Model\Valido;
+use APP\Model\Provider;
+use APP\Model\Product;
+use APP\Model\Address;
 
+
+use APP\Utils\Redirect;
 if(empty($_POST)){
     Redirect::redirect(
         type: 'error',
@@ -15,26 +17,69 @@ if(empty($_POST)){
     );
 }
 
-$Cnpj = $_POST["cnpj"];
-$ProviderName = $_POST["name"];
-$Address = $_POST["address"];
+$name = $_POST["name"];
+$cnpj = $_POST["cnpj"];
+$publicPlace = $_POST["publicPlace"];
+$streetNumber = $_POST["streetNumber"];
+$neighborhood = $_POST["neighborhood"];
+$city = $_POST["city"];
+$postalCode = $_POST["postalCode"];
 
-//*Validação a fazer
 $erro = array();
-if(!Valido::validname($name))
+
+if(!Valido::validName($name))
 {
-    array_push($erro, 'O nome do produto deve conter ao menos 5 caracteres entre letras e números!');
+    array_push($erro, 'O nome do fornecedor deve conter ao menos 5 caracteres entre letras e números!');
 }
-//*Validação a fazer
+
+if(!Valido::validCNPJ($cnpj))
+{
+    array_push($erro, 'O CNPJ deve possuir 13 números!');
+}
+
+if(!Valido::validName($publicPlace))
+{
+    array_push($erro, 'O nome da rua deve conter ao menos 5 caracteres entre letras e números!');
+}
+
+if(!Valido::validNumber($streetNumber))
+{
+    array_push($erro, 'O número da rua deve ser positivo!');
+}
+
+if(!Valido::validName($neighborhood))
+{
+    array_push($erro, 'O nome do bairro deve conter ao menos 5 caracteres entre letras e números!');
+}
+
+if(!Valido::validName($city))
+{
+    array_push($erro, 'O nome da cidade deve conter ao menos 5 caracteres entre letras e números!');
+}
+
+if(!Valido::validPostalCode($postalCode))
+{
+    array_push($erro, 'O código postal deve conter 8 dígitos!');
+}
 
 if($erro) //*Array não vázio igual a positivo
 {
-    Redirect::redirect(message: $erro,type:'error');
+    Redirect::redirect(
+        message: $erro,
+        type:'warning'
+    );
 }else{
+    $address= new Address(
+            publicPlace: $publicPlace,
+            streetNumber: $streetNumber,
+            neighborhood: $neighborhood,
+            city: $city,
+            postalCode: $postalCode,
+    );
     $provider = new Provider(
-        name: $name,
-        cnpj: $cnpj,
-        address:new Address()
+            name: $name,
+            cnpj: $cnpj,s
+            address:$ddress,
     );
     echo "<pre>";
     var_dump($provider);

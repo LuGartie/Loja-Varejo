@@ -52,7 +52,17 @@ if($erro) //*Array não vázio igual a positivo
         cost: $productCost,
         tributes:0.75,
         quantity:$productQuantity,
-        provider:new Provider($cnpj,$name,$address)
+        provider:new Provider(
+            name: $name,
+            cnpj: $cnpj,
+            address:new Address(
+                publicPlace: $publicPlace,
+                streetNumber: $streetNumber,
+                neighborhood: $neighborhood,
+                city: $city,
+                postalCode: $postalCode,
+            ),
+        ),
     );
     echo "<pre>";
     var_dump($product);
@@ -60,3 +70,4 @@ if($erro) //*Array não vázio igual a positivo
     exit;
     Redirect::redirect(message: 'Produto cadastrado com sucesso');
 }
+?>

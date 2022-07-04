@@ -24,3 +24,4 @@ class Sale
         return $product->price * $product->quantity;
     }
 }   
+?>
