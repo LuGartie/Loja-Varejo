@@ -53,6 +53,7 @@
                 <input type="number" name="postalCode" id="oostalCode" class="border border-blue-400" required>
             </article>
         </section>
+        
         <article class="flex justify-center mt-3">
             <button type="submit" class="p-3 text-white bg-blue-700 rounded">Cadastrar</button>
         </article>
