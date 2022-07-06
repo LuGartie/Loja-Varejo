@@ -7,6 +7,7 @@ use APP\Model\Valido;
 use APP\Model\Provider;
 use APP\Model\Product;
 use APP\Model\Address;
+use APP\Utils\Redirect;
 
 if(empty($_POST)){
     Redirect::redirect(
