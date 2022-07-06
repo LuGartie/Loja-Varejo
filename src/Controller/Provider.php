@@ -21,7 +21,7 @@ $providerPostalCode = $_POST["postalCode"];
 
 $erro = array();
 
-if(!Valido::validName($providerNamee))
+if(!Valido::validName($providerName))
 {
     array_push($erro, 'O nome do fornecedor deve conter ao menos 5 caracteres entre letras e números!');
 }
@@ -64,17 +64,20 @@ if($erro) //*Array não vázio igual a positivo
     );
 }else{
     $address= new Address(
-        publicPlace: $publicPlace,
-        streetNumber: $streetNumber,
-        neighborhood: $neighborhood,
-        city: $city,
-        postalCode: $postalCode,
+        publicPlace: $providerPublicPlace,
+        streetNumber: $providerStreetNumber,
+        neighborhood: $providerNeighborhood,
+        city: $providerCity,
+        postalCode: $providerPostalCode,
     );
     $provider = new Provider(
-        name: $name,
-        npj: $cnpj,
-        adress:new $address,
+        name: $providerName,
+        cnpj: $providerCnpj,
+        address: $address,
     );
-    Redirect::redirect(message: 'Produto cadastrado com sucesso');
+    echo "<pre>";
+    var_dump($provider);
+    echo "</pre>";
+    exit;
+    Redirect::redirect(message: 'Fornecedor cadastrado com sucesso');
 }
-
