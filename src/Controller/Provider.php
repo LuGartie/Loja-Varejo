@@ -8,6 +8,12 @@ use APP\Model\Provider;
 use APP\Model\Product;
 use APP\Model\Address;
 
+if(empty($_POST)){
+    Redirect::redirect(
+        type: 'error',
+        message:'Requisição invalida.'
+    );
+}
 
 use APP\Utils\Redirect;
 
@@ -75,10 +81,7 @@ if($erro) //*Array não vázio igual a positivo
         cnpj: $providerCnpj,
         address: $address,
     );
-    echo "<pre>";
-    var_dump($provider);
-    echo "</pre>";
-    exit;
+    
     Redirect::redirect(message: 'Fornecedor cadastrado com sucesso');
 }
 
