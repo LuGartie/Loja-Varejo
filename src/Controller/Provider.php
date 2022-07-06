@@ -75,10 +75,6 @@ if($erro) //*Array não vázio igual a positivo
         npj: $cnpj,
         adress:new $address,
     );
-    echo "<pre>";
-    var_dump($provider);
-    echo "</pre>";
-    exit;
     Redirect::redirect(message: 'Produto cadastrado com sucesso');
 }
 
